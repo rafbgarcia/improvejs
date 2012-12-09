@@ -1,9 +1,21 @@
 _Number = Number.prototype
 
-# Loops n times
 _Number.times   = (fn) ->
     fn(i) for i in [0...@valueOf()]
 
+
+_Number.odd = ->
+    @valueOf() % 2 != 0
+
+
+_Number.multiple       =
+_Number.multiple_of    =
+_Number.is_multiple_if =
+_Number.isMultipleOf   = (n) ->
+    n % @valueOf() == 0
+
+
+# Date
 
 _Number.min     =
 _Number.mins    =
@@ -28,14 +40,15 @@ _Number.weeks = ->
 
 
 _Number.ago = ->
-    Date.now().to_seconds() - @valueOf()
+    new Date(Date.now().to_seconds() - @valueOf())
 
-
+# TODO rename function to timestamp_to_seconds
 _Number.to_seconds =
 _Number.toSeconds  = ->
 	parseInt @valueOf() / 1000
 
 
+# TODO rename function to seconds_to_timestamp
 _Number.to_timestamp =
 _Number.toTimestamp  = ->
 	parseInt @valueOf() * 1000
@@ -60,12 +73,9 @@ _Number.daysInMonth   = ->
 
 _Number.days_in_month_of =
 _Number.daysInMonthOf    = (year) ->
-	new Date(year, @valueOf() + 1, 0).getDate()
+    new Date(year, @valueOf() + 1, 0).getDate()
 
-_Number.odd = ->
-    @valueOf() % 2 != 0
 
-_Number.multiple       =
-_Number.is_multiple_if =
-_Number.isMultipleOf   = (n) ->
-    n % @valueOf() == 0
+_Number.days_in_month_of =
+_Number.daysInMonthOf    = (year) ->
+    new Date(year, @valueOf() + 1, 0).getDate()

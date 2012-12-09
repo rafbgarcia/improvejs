@@ -13,6 +13,14 @@
     return _results;
   };
 
+  _Number.odd = function() {
+    return this.valueOf() % 2 !== 0;
+  };
+
+  _Number.multiple = _Number.multiple_of = _Number.is_multiple_if = _Number.isMultipleOf = function(n) {
+    return n % this.valueOf() === 0;
+  };
+
   _Number.min = _Number.mins = _Number.minute = _Number.minutes = function() {
     return this.valueOf() * 60;
   };
@@ -30,7 +38,7 @@
   };
 
   _Number.ago = function() {
-    return Date.now().to_seconds() - this.valueOf();
+    return new Date(Date.now().to_seconds() - this.valueOf());
   };
 
   _Number.to_seconds = _Number.toSeconds = function() {
@@ -59,12 +67,8 @@
     return new Date(year, this.valueOf() + 1, 0).getDate();
   };
 
-  _Number.odd = function() {
-    return this.valueOf() % 2 !== 0;
-  };
-
-  _Number.multiple = _Number.is_multiple_if = _Number.isMultipleOf = function(n) {
-    return n % this.valueOf() === 0;
+  _Number.days_in_month_of = _Number.daysInMonthOf = function(year) {
+    return new Date(year, this.valueOf() + 1, 0).getDate();
   };
 
 }).call(this);
