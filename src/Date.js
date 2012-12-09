@@ -84,7 +84,7 @@
   };
 
   _Date.diff = function(date) {
-    return parseInt((this - date).toSeconds());
+    return parseInt((this - date).milli_to_sec());
   };
 
 }).call(this);

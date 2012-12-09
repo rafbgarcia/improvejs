@@ -44,7 +44,6 @@ _Date.nextYear  = ->
         @advance 365.days()
 
 
-
 _Date.last_year =
 _Date.lastYear  = ->
     if @isLeapYear()
@@ -71,6 +70,5 @@ _Date.daysInMonth = (month) ->
     new Date(@getFullYear(), month + 1, 0).getDate()
 
 
-# Return the difference between 2 dates in seconds
 _Date.diff = (date) ->
-    parseInt (@ - date).toSeconds()
+    parseInt (@ - date).milli_to_sec()
