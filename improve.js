@@ -352,7 +352,7 @@
   };
 
   _Date.diff = function(date) {
-    return parseInt((this - date).toSeconds());
+    return parseInt((this - date).milli_to_sec());
   };
 
   _Function = Function.prototype;
@@ -377,6 +377,10 @@
   };
 
   _Number.multiple_of = _Number.multipleOf = function(n) {
+    return this.valueOf() % n === 0;
+  };
+
+  _Number.divider_of = _Number.dividerOf = function(n) {
     return n % this.valueOf() === 0;
   };
 

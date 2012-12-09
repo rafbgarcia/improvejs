@@ -18,6 +18,10 @@
   };
 
   _Number.multiple_of = _Number.multipleOf = function(n) {
+    return this.valueOf() % n === 0;
+  };
+
+  _Number.divider_of = _Number.dividerOf = function(n) {
     return n % this.valueOf() === 0;
   };
 

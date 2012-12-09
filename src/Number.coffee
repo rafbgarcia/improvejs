@@ -10,10 +10,15 @@ _Number.odd = ->
 
 _Number.multiple_of =
 _Number.multipleOf  = (n) ->
+    @valueOf() % n == 0
+
+
+_Number.divider_of =
+_Number.dividerOf  = (n) ->
     n % @valueOf() == 0
 
 
-# Date
+# Date functions
 
 _Number.min     =
 _Number.mins    =

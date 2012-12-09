@@ -26,9 +26,6 @@ describe 'Number', ->
         it 'should return n weeks in seconds ', ->
             expect(1.week()).toEqual(7.days())
 
-    # #ago and #fromNow
-    # may fail sometimes because of the milliseconds
-    # it takes to get the dates
     describe '#ago', ->
         it 'should return the time ago in seconds', ->
             expect(30.days().ago()).toEqual     Date.now().milli_to_sec() - 30.days()
@@ -83,8 +80,15 @@ describe 'Number', ->
 
     describe '#multiple', ->
         it 'returns true if number is multiple of n', ->
-            expect(3.multipleOf(9)).toEqual true
-            expect(2.multipleOf(12)).toEqual true
+            expect(9.multipleOf(3)).toEqual true
+            expect(12.multipleOf(2)).toEqual true
             expect(2.multipleOf(5)).toEqual false
-            expect(40.multipleOf(50)).toEqual false
+            expect(3.multipleOf(9)).toEqual false
+
+    describe '#dividerOf', ->
+        it 'returns true if number is divider of n', ->
+            expect(3.dividerOf(9)).toEqual true
+            expect(2.dividerOf(8)).toEqual true
+            expect(10.dividerOf(5)).toEqual false
+            expect(9.dividerOf(3)).toEqual false
 

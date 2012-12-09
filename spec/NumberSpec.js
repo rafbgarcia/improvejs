@@ -94,12 +94,20 @@
         return expect(2..odd()).toEqual(false);
       });
     });
-    return describe('#multiple', function() {
+    describe('#multiple', function() {
       return it('returns true if number is multiple of n', function() {
-        expect(3..multipleOf(9)).toEqual(true);
-        expect(2..multipleOf(12)).toEqual(true);
+        expect(9..multipleOf(3)).toEqual(true);
+        expect(12..multipleOf(2)).toEqual(true);
         expect(2..multipleOf(5)).toEqual(false);
-        return expect(40..multipleOf(50)).toEqual(false);
+        return expect(3..multipleOf(9)).toEqual(false);
+      });
+    });
+    return describe('#dividerOf', function() {
+      return it('returns true if number is divider of n', function() {
+        expect(3..dividerOf(9)).toEqual(true);
+        expect(2..dividerOf(8)).toEqual(true);
+        expect(10..dividerOf(5)).toEqual(false);
+        return expect(9..dividerOf(3)).toEqual(false);
       });
     });
   });
