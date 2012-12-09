@@ -67,8 +67,4 @@
     return new Date(year, this.valueOf() + 1, 0).getDate();
   };
 
-  _Number.days_in_month_of = _Number.daysInMonthOf = function(year) {
-    return new Date(year, this.valueOf() + 1, 0).getDate();
-  };
-
 }).call(this);

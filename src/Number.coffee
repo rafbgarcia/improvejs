@@ -73,8 +73,3 @@ _Number.daysInMonth   = ->
 _Number.days_in_month_of =
 _Number.daysInMonthOf    = (year) ->
     new Date(year, @valueOf() + 1, 0).getDate()
-
-
-_Number.days_in_month_of =
-_Number.daysInMonthOf    = (year) ->
-    new Date(year, @valueOf() + 1, 0).getDate()
