@@ -17,7 +17,7 @@
     return this.valueOf() % 2 !== 0;
   };
 
-  _Number.multiple = _Number.multiple_of = _Number.is_multiple_if = _Number.isMultipleOf = function(n) {
+  _Number.multiple_of = _Number.multipleOf = function(n) {
     return n % this.valueOf() === 0;
   };
 

@@ -284,11 +284,11 @@
   };
 
   _Date.advance = function(seconds) {
-    return new Date(this.getTime() + seconds.toTimestamp());
+    return new Date(this.getTime() + seconds.sec_to_milli());
   };
 
   _Date.reduce = function(seconds) {
-    return new Date(this.getTime() - seconds.toTimestamp());
+    return new Date(this.getTime() - seconds.sec_to_milli());
   };
 
   _Date.tomorrow = function() {
@@ -374,6 +374,14 @@
     return _results;
   };
 
+  _Number.odd = function() {
+    return this.valueOf() % 2 !== 0;
+  };
+
+  _Number.multiple_of = _Number.multipleOf = function(n) {
+    return n % this.valueOf() === 0;
+  };
+
   _Number.min = _Number.mins = _Number.minute = _Number.minutes = function() {
     return this.valueOf() * 60;
   };
@@ -391,23 +399,23 @@
   };
 
   _Number.ago = function() {
-    return Date.now().to_seconds() - this.valueOf();
+    return Date.now().milli_to_sec() - this.valueOf();
   };
 
-  _Number.to_seconds = _Number.toSeconds = function() {
+  _Number.milli_to_sec = _Number.milliToSeconds = function() {
     return parseInt(this.valueOf() / 1000);
   };
 
-  _Number.to_timestamp = _Number.toTimestamp = function() {
-    return parseInt(this.valueOf() * 1000);
+  _Number.sec_to_milli = _Number.secToMilli = function() {
+    return this.valueOf() * 1000;
   };
 
   _Number.from_now = _Number.fromNow = function() {
-    return Date.now().to_seconds() + this.valueOf();
+    return Date.now().milli_to_sec() + this.valueOf();
   };
 
   _Number.to_d = _Number.to_date = _Number.toDate = function() {
-    return new Date(this.valueOf().to_timestamp());
+    return new Date(this.valueOf().sec_to_milli());
   };
 
   _Number.days_in_month = _Number.daysInMonth = function() {
@@ -420,12 +428,8 @@
     return new Date(year, this.valueOf() + 1, 0).getDate();
   };
 
-  _Number.odd = function() {
-    return this.valueOf() % 2 !== 0;
-  };
-
-  _Number.multiple = _Number.is_multiple_if = _Number.isMultipleOf = function(n) {
-    return n % this.valueOf() === 0;
+  _Number.days_in_month_of = _Number.daysInMonthOf = function(year) {
+    return new Date(year, this.valueOf() + 1, 0).getDate();
   };
 
 }).call(this);
