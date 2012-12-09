@@ -22,15 +22,16 @@ Loops n times starting from 0
 
 	var count = 10, sum = 0;
 	count.times(function(i) {
-		sum += index; // sum 0 till 9
+		sum += i; // sum 0 till 9
 	});
 
-### multiple
-
-Checks if number is multiple of given number
+### multipleOf, dividerOf
 
 	10..multipleOf(5);  // true
-	36..multiple_of(6); // true
+	5..multiple_of(10); // false
+
+	10..dividerOf(5);  // false
+	5..divider_of(10); // true
 
 ### odd
 
