@@ -22,7 +22,8 @@ Loops n times starting from 0
 
 	var count = 10, sum = 0;
 	count.times(function(i) {
-		sum += i; // sum 0 till 9
+		// sum 0 till 9
+		sum += i;
 	});
 
 ### multipleOf, dividerOf
@@ -42,14 +43,16 @@ Checks if number is odd
 
 ### minutes, hours, days, weeks
 
-	1..day();   // in seconds -> 60 * 60 * 24
+Returns time in seconds for the expression
+
+	1..day(); // 60 * 60 * 24
 	8..days();
 	2..hours();
 	36..minutes();
 
 ### ago, fromNow
 
-Returns seconds since 1/1/1970
+Returns time in seconds since 1/1/1970
 
 	2..days().ago()
 	1..week().fromNow()
