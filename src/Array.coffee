@@ -1,7 +1,7 @@
 _Array = Array.prototype
 
 _Array.each = (fn) ->
-    fn(value, i) for i, value in @
+    fn(value, i) for value, i in @
 
 
 _Array.include = (val) ->

@@ -7,8 +7,8 @@
   _Array.each = function(fn) {
     var i, value, _i, _len, _results;
     _results = [];
-    for (value = _i = 0, _len = this.length; _i < _len; value = ++_i) {
-      i = this[value];
+    for (i = _i = 0, _len = this.length; _i < _len; i = ++_i) {
+      value = this[i];
       _results.push(fn(value, i));
     }
     return _results;
