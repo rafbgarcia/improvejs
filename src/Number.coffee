@@ -40,29 +40,30 @@ _Number.weeks = ->
 
 
 _Number.ago = ->
-    new Date(Date.now().to_seconds() - @valueOf())
+    Date.now().milli_to_sec() - @valueOf()
 
-# TODO rename function to timestamp_to_seconds
-_Number.to_seconds =
-_Number.toSeconds  = ->
+
+# TODO rename function to milli_to_sec
+_Number.milli_to_sec =
+_Number.milliToSeconds  = ->
 	parseInt @valueOf() / 1000
 
 
-# TODO rename function to seconds_to_timestamp
-_Number.to_timestamp =
-_Number.toTimestamp  = ->
-	parseInt @valueOf() * 1000
+# TODO rename function to secs_to_milli
+_Number.sec_to_milli =
+_Number.secToMilli  = ->
+	@valueOf() * 1000
 
 
 _Number.from_now =
 _Number.fromNow  = ->
-    Date.now().to_seconds() + @valueOf()
+    Date.now().milli_to_sec() + @valueOf()
 
 
 _Number.to_d    =
 _Number.to_date =
 _Number.toDate  = ->
-    new Date @valueOf().to_timestamp()
+    new Date @valueOf().sec_to_milli()
 
 
 _Number.days_in_month =

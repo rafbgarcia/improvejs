@@ -38,23 +38,23 @@
   };
 
   _Number.ago = function() {
-    return new Date(Date.now().to_seconds() - this.valueOf());
+    return Date.now().milli_to_sec() - this.valueOf();
   };
 
-  _Number.to_seconds = _Number.toSeconds = function() {
+  _Number.milli_to_sec = _Number.milliToSeconds = function() {
     return parseInt(this.valueOf() / 1000);
   };
 
-  _Number.to_timestamp = _Number.toTimestamp = function() {
-    return parseInt(this.valueOf() * 1000);
+  _Number.sec_to_milli = _Number.secToMilli = function() {
+    return this.valueOf() * 1000;
   };
 
   _Number.from_now = _Number.fromNow = function() {
-    return Date.now().to_seconds() + this.valueOf();
+    return Date.now().milli_to_sec() + this.valueOf();
   };
 
   _Number.to_d = _Number.to_date = _Number.toDate = function() {
-    return new Date(this.valueOf().to_timestamp());
+    return new Date(this.valueOf().sec_to_milli());
   };
 
   _Number.days_in_month = _Number.daysInMonth = function() {

@@ -12,11 +12,11 @@ _Date.daysInMonth   = ->
 
 
 _Date.advance = (seconds) ->
-    new Date @getTime() + seconds.toTimestamp()
+    new Date @getTime() + seconds.sec_to_milli()
 
 
 _Date.reduce = (seconds) ->
-    new Date @getTime() - seconds.toTimestamp()
+    new Date @getTime() - seconds.sec_to_milli()
 
 
 _Date.tomorrow = ->

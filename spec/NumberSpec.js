@@ -38,16 +38,16 @@
     });
     describe('#ago', function() {
       return it('should return the time ago in seconds', function() {
-        expect(30..days().ago()).toEqual(Date.now().toSeconds() - 30..days());
-        expect(1..hour().ago()).toEqual(Date.now().toSeconds() - 1..hour());
-        return expect(32..minutes().ago()).toEqual(Date.now().toSeconds() - 32..minutes());
+        expect(30..days().ago()).toEqual(Date.now().milliToSeconds() - 30..days());
+        expect(1..hour().ago()).toEqual(Date.now().milliToSeconds() - 1..hour());
+        return expect(32..minutes().ago()).toEqual(Date.now().milliToSeconds() - 32..minutes());
       });
     });
     describe('#fromNow', function() {
       return it('should return the time from now in seconds', function() {
-        expect(30..days().fromNow()).toEqual(Date.now().toSeconds() + 30..days());
-        expect(1..day().from_now()).toEqual(Date.now().toSeconds() + 1..day());
-        return expect(3..minutes().from_now()).toEqual(Date.now().toSeconds() + 3..minutes());
+        expect(30..days().fromNow()).toEqual(Date.now().milliToSeconds() + 30..days());
+        expect(1..day().from_now()).toEqual(Date.now().milliToSeconds() + 1..day());
+        return expect(3..minutes().from_now()).toEqual(Date.now().milliToSeconds() + 3..minutes());
       });
     });
     describe('#toDate', function() {

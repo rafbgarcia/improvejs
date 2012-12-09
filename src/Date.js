@@ -14,11 +14,11 @@
   };
 
   _Date.advance = function(seconds) {
-    return new Date(this.getTime() + seconds.toTimestamp());
+    return new Date(this.getTime() + seconds.sec_to_milli());
   };
 
   _Date.reduce = function(seconds) {
-    return new Date(this.getTime() - seconds.toTimestamp());
+    return new Date(this.getTime() - seconds.sec_to_milli());
   };
 
   _Date.tomorrow = function() {
