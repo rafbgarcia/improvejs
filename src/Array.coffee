@@ -8,7 +8,6 @@ _Array.include = (val) ->
     if @indexOf(val) != -1 then true else false
 
 
-# TODO refactor
 _Array.at = (from, to) ->
     throw new TypeError('argument "from" must be specified') unless from?
 
@@ -50,19 +49,34 @@ _Array.min = ->
     @reduce (previous, current) ->
         previous = parseInt(previous, 10)
         current  = parseInt(current, 10)
-        if previous < current then previous else current
+        if !isNaN(previous) and !isNaN(current)
+            if previous < current then previous else current
+        else if previous is NaN and current isnt NaN
+            current
+        else
+            previous
 
 
 _Array.max = ->
     @reduce (previous, current) ->
         previous = parseInt(previous, 10)
         current = parseInt(current, 10)
-        if previous > current then previous else current
+        if !isNaN(previous) and !isNaN(current)
+            if previous > current then previous else current
+        else if previous is NaN and current isnt NaN
+            current
+        else
+            previous
 
 
 _Array.sum = ->
     @reduce (previous, current) ->
-        previous + current
+        if !isNaN(previous) and !isNaN(current)
+            previous + current
+        else if previous is NaN and current isnt NaN
+            current
+        else
+            previous
 
 
 _Array.sum_if = (fn) ->
@@ -73,7 +87,12 @@ _Array.sum_if = (fn) ->
 
 _Array.multiply = ->
     @reduce (previous, current) ->
-        previous * current
+        if !isNaN(previous) and !isNaN(current)
+            previous * current
+        else if previous is NaN and current isnt NaN
+            current
+        else
+            previous
 
 
 _Array.uniq   =
@@ -94,8 +113,9 @@ _Array.diffAll  = (otherArray) ->
     newArr.concat otherArray.filter (val) =>
         not @include(val)
 
-
-_Array.reject  = (from, to) ->
+_Array.delete_at =
+_Array.deleteAt  =
+_Array.reject    = (from, to) ->
     unless to?
         @diff [@[from]]
     else
@@ -105,13 +125,6 @@ _Array.reject  = (from, to) ->
 _Array.intersection = (otherArray) ->
     @filter (val, i, arr) ->
         otherArray.include(val)
-
-
-
-_Array.delete_at =
-_Array.deleteAt  = (from, to) ->
-    @reject(from, to)
-
 
 
 

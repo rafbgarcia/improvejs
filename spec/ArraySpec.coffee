@@ -24,23 +24,25 @@ describe 'Array', ->
         it 'return element at index', ->
             expect(arr.at(1)).toEqual 'Apple'
             expect(arr.at(-1)).toEqual 'Orange'
-            expect(arr2.at(-2)).toEqual 'Pear'
 
         it 'return elements at range', ->
-            expect(arr.at(1, 2)).toEqual ['Apple', 'Orange']
-            expect(arr2.at(3, 1)).toEqual ['Apple', 'Orange', 'Pear']
-            expect(arr.at(0, -1)).toEqual ['Banana', 'Orange']
-            expect(arr2.at(-2, -1)).toEqual ['Pear', 'Papaya']
-            expect(arr2.at(-1, -2)).toEqual ['Pear', 'Papaya']
-            expect(arr2.at(-1, 0)).toEqual ['Banana', 'Papaya']
+            expect(arr2.at(1, 0)).toEqual []
+            expect(arr2.at(-2, 1)).toEqual []
+
+            expect(arr2.at(1, -1)).toEqual ['Apple', 'Orange', 'Pear', 'Papaya']
+            expect(arr2.at(0, 1)).toEqual ['Banana', 'Apple']
+            expect(arr2.at(0, -1)).toEqual ['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']
 
     describe '#from', ->
         it 'returns elements from n till last', ->
-            expect(arr2.from(3)).toEqual ['Pear', 'Papaya']
+            expect(arr2.from(2)).toEqual ['Orange', 'Pear', 'Papaya']
+            expect(arr2.from(-2)).toEqual ['Pear', 'Papaya']
+            expect(arr2.from(6)).toEqual []
 
     describe '#to', ->
         it 'returns elements from 0 till n', ->
-            expect(arr2.to(2)).toEqual ['Banana', 'Apple', 'Orange']
+            expect(arr2.to(2)).toEqual arr2.at(0, 2)
+            expect(arr2.to(-1)).toEqual arr2.at(0, -1)
 
     describe '#compact', ->
         it 'removes empty elements', ->
@@ -55,10 +57,12 @@ describe 'Array', ->
 
     describe '#min', ->
         it 'finds the minimum value in array', ->
+            numbers.push('a word');
             expect(numbers.min()).toEqual 2
 
     describe '#max', ->
         it 'finds the maximum value in array', ->
+            numbers.push('a word');
             expect(numbers.max()).toEqual 1923
 
     describe '#sum', ->
@@ -67,8 +71,8 @@ describe 'Array', ->
 
     describe '#sum_if', ->
         it 'sum elements in array if it attends the given condition', ->
-            sum = numbers.sum_if (el, i) ->
-                return el < 100
+            sum = numbers.sum_if (val, i) ->
+                return val < 100
             expect(sum).toEqual 55
 
     describe '#multiply', ->
@@ -92,25 +96,18 @@ describe 'Array', ->
 
     describe '#reject', ->
         it 'returns an array without the rejected index', ->
+            expect(arr.delete_at(1)).toEqual ['Banana', 'Orange']
             expect(arr.reject(0)).toEqual ['Apple', 'Orange']
 
         it 'returns an array without the rejected range', ->
-            expect(arr2.reject(0, -2)).toEqual ['Apple', 'Orange']
+            expect(arr2.reject(0, -2)).toEqual ['Papaya']
+            expect(arr2.reject(1, -1)).toEqual ['Banana']
+            expect(arr2.delete_at(1, 2)).toEqual ['Banana', 'Pear', 'Papaya']
+            expect(arr2.delete_at(1, -1)).toEqual ['Banana']
+            expect(arr2.delete_at(0, -1)).toEqual []
 
     describe '#intersection', ->
         it 'returns the intersection between arrays', ->
             expect(arr.intersection(arr2)).toEqual ['Banana', 'Apple', 'Orange']
             expect(arr2.intersection(arr)).toEqual ['Banana', 'Apple', 'Orange']
-
-
-    describe '#delete_at', ->
-        it 'removes elements in index', ->
-            expect(arr.delete_at(1)).toEqual ['Banana', 'Orange']
-
-        it 'removes elements in range', ->
-            expect(arr.delete_at(1, 2)).toEqual ['Banana']
-            expect(arr.delete_at(-1, 1)).toEqual []
-            expect(arr.delete_at(-1, 0)).toEqual ['Apple']
-
-
 

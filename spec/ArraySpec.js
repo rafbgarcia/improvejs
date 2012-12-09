@@ -34,26 +34,27 @@
       });
       it('return element at index', function() {
         expect(arr.at(1)).toEqual('Apple');
-        expect(arr.at(-1)).toEqual('Orange');
-        return expect(arr2.at(-2)).toEqual('Pear');
+        return expect(arr.at(-1)).toEqual('Orange');
       });
       return it('return elements at range', function() {
-        expect(arr.at(1, 2)).toEqual(['Apple', 'Orange']);
-        expect(arr2.at(3, 1)).toEqual(['Apple', 'Orange', 'Pear']);
-        expect(arr.at(0, -1)).toEqual(['Banana', 'Orange']);
-        expect(arr2.at(-2, -1)).toEqual(['Pear', 'Papaya']);
-        expect(arr2.at(-1, -2)).toEqual(['Pear', 'Papaya']);
-        return expect(arr2.at(-1, 0)).toEqual(['Banana', 'Papaya']);
+        expect(arr2.at(1, 0)).toEqual([]);
+        expect(arr2.at(-2, 1)).toEqual([]);
+        expect(arr2.at(1, -1)).toEqual(['Apple', 'Orange', 'Pear', 'Papaya']);
+        expect(arr2.at(0, 1)).toEqual(['Banana', 'Apple']);
+        return expect(arr2.at(0, -1)).toEqual(['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']);
       });
     });
     describe('#from', function() {
       return it('returns elements from n till last', function() {
-        return expect(arr2.from(3)).toEqual(['Pear', 'Papaya']);
+        expect(arr2.from(2)).toEqual(['Orange', 'Pear', 'Papaya']);
+        expect(arr2.from(-2)).toEqual(['Pear', 'Papaya']);
+        return expect(arr2.from(6)).toEqual([]);
       });
     });
     describe('#to', function() {
       return it('returns elements from 0 till n', function() {
-        return expect(arr2.to(2)).toEqual(['Banana', 'Apple', 'Orange']);
+        expect(arr2.to(2)).toEqual(arr2.at(0, 2));
+        return expect(arr2.to(-1)).toEqual(arr2.at(0, -1));
       });
     });
     describe('#compact', function() {
@@ -74,11 +75,13 @@
     });
     describe('#min', function() {
       return it('finds the minimum value in array', function() {
+        numbers.push('a word');
         return expect(numbers.min()).toEqual(2);
       });
     });
     describe('#max', function() {
       return it('finds the maximum value in array', function() {
+        numbers.push('a word');
         return expect(numbers.max()).toEqual(1923);
       });
     });
@@ -90,8 +93,8 @@
     describe('#sum_if', function() {
       return it('sum elements in array if it attends the given condition', function() {
         var sum;
-        sum = numbers.sum_if(function(el, i) {
-          return el < 100;
+        sum = numbers.sum_if(function(val, i) {
+          return val < 100;
         });
         return expect(sum).toEqual(55);
       });
@@ -122,26 +125,21 @@
     });
     describe('#reject', function() {
       it('returns an array without the rejected index', function() {
+        expect(arr.delete_at(1)).toEqual(['Banana', 'Orange']);
         return expect(arr.reject(0)).toEqual(['Apple', 'Orange']);
       });
       return it('returns an array without the rejected range', function() {
-        return expect(arr2.reject(0, -2)).toEqual(['Apple', 'Orange']);
+        expect(arr2.reject(0, -2)).toEqual(['Papaya']);
+        expect(arr2.reject(1, -1)).toEqual(['Banana']);
+        expect(arr2.delete_at(1, 2)).toEqual(['Banana', 'Pear', 'Papaya']);
+        expect(arr2.delete_at(1, -1)).toEqual(['Banana']);
+        return expect(arr2.delete_at(0, -1)).toEqual([]);
       });
     });
-    describe('#intersection', function() {
+    return describe('#intersection', function() {
       return it('returns the intersection between arrays', function() {
         expect(arr.intersection(arr2)).toEqual(['Banana', 'Apple', 'Orange']);
         return expect(arr2.intersection(arr)).toEqual(['Banana', 'Apple', 'Orange']);
-      });
-    });
-    return describe('#delete_at', function() {
-      it('removes elements in index', function() {
-        return expect(arr.delete_at(1)).toEqual(['Banana', 'Orange']);
-      });
-      return it('removes elements in range', function() {
-        expect(arr.delete_at(1, 2)).toEqual(['Banana']);
-        expect(arr.delete_at(-1, 1)).toEqual([]);
-        return expect(arr.delete_at(-1, 0)).toEqual(['Apple']);
       });
     });
   });

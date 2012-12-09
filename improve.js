@@ -77,10 +77,16 @@
     return this.reduce(function(previous, current) {
       previous = parseInt(previous, 10);
       current = parseInt(current, 10);
-      if (previous < current) {
-        return previous;
-      } else {
+      if (!isNaN(previous) && !isNaN(current)) {
+        if (previous < current) {
+          return previous;
+        } else {
+          return current;
+        }
+      } else if (previous === NaN && current !== NaN) {
         return current;
+      } else {
+        return previous;
       }
     });
   };
@@ -89,17 +95,29 @@
     return this.reduce(function(previous, current) {
       previous = parseInt(previous, 10);
       current = parseInt(current, 10);
-      if (previous > current) {
-        return previous;
-      } else {
+      if (!isNaN(previous) && !isNaN(current)) {
+        if (previous > current) {
+          return previous;
+        } else {
+          return current;
+        }
+      } else if (previous === NaN && current !== NaN) {
         return current;
+      } else {
+        return previous;
       }
     });
   };
 
   _Array.sum = function() {
     return this.reduce(function(previous, current) {
-      return previous + current;
+      if (!isNaN(previous) && !isNaN(current)) {
+        return previous + current;
+      } else if (previous === NaN && current !== NaN) {
+        return current;
+      } else {
+        return previous;
+      }
     });
   };
 
@@ -113,7 +131,13 @@
 
   _Array.multiply = function() {
     return this.reduce(function(previous, current) {
-      return previous * current;
+      if (!isNaN(previous) && !isNaN(current)) {
+        return previous * current;
+      } else if (previous === NaN && current !== NaN) {
+        return current;
+      } else {
+        return previous;
+      }
     });
   };
 
@@ -146,7 +170,7 @@
     }));
   };
 
-  _Array.reject = function(from, to) {
+  _Array.delete_at = _Array.deleteAt = _Array.reject = function(from, to) {
     if (to == null) {
       return this.diff([this[from]]);
     } else {
@@ -158,10 +182,6 @@
     return this.filter(function(val, i, arr) {
       return otherArray.include(val);
     });
-  };
-
-  _Array.delete_at = _Array.deleteAt = function(from, to) {
-    return this.reject(from, to);
   };
 
   if (!_Array.map) {
