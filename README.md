@@ -18,6 +18,11 @@ All tested with Jasmine
 
 ## What we got until now
 
+* [Number](https://github.com/rafbgarcia/improvejs/#number)
+* [Array](https://github.com/rafbgarcia/improvejs/#array)
+* [Date](https://github.com/rafbgarcia/improvejs/#array)
+
+
 # Number
 
 #### times
@@ -208,3 +213,9 @@ Returns an array without the specified indexes
 	arr.reject(-2, -1);    // ["Foo", "Bar"]
 	arr.delete_at(0);	   // ["Bar", "John", "Doe"]
 	arr.delete_at(-2, -1); // [ "Foo", "Bar"]
+
+
+
+# Date
+
+documenting...
