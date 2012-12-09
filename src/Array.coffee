@@ -11,6 +11,7 @@ _Array.include = (val) ->
 # TODO refactor
 _Array.at = (from, to) ->
     throw new TypeError('argument "from" must be specified') unless from?
+
     unless to?
         return if from >= 0
             @[from]
@@ -18,37 +19,14 @@ _Array.at = (from, to) ->
             @[@length - Math.abs(from)]
 
     newArr = []
-    swap = () ->
-        s    = from
-        from = to
-        to   = s
 
+    from = @length - Math.abs(from) if from < 0
+    to   = @length - Math.abs(to)   if to < 0
 
-    if from >= 0 and to >= 0
-        swap() if from > to
-        newArr = @filter (el, i) ->
-            return from <= i <= to
+    return [] if from > to
 
-    else if from >= 0 and to < 0
-        to = Math.abs(to)
-        newArr = @filter (el, i, arr) ->
-            return i <= from or i >= (arr.length - to)
-
-    else if from < 0 and to < 0
-        from = Math.abs(from)
-        to   = Math.abs(to)
-        swap() if to > from
-
-        newArr = @filter (el, i, arr) ->
-            return (arr.length - from) <= i <= (arr.length - to)
-
-    else
-        from = Math.abs(from)
-        newArr = @filter (el, i, arr) ->
-            return i <= to or i >= (arr.length - from)
-
-    return newArr
-
+    @filter (val, i) ->
+        return from <= i <= to
 
 
 _Array.to = (to) ->

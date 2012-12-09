@@ -23,7 +23,7 @@
   };
 
   _Array.at = function(from, to) {
-    var newArr, swap;
+    var newArr;
     if (from == null) {
       throw new TypeError('argument "from" must be specified');
     }
@@ -35,40 +35,18 @@
       }
     }
     newArr = [];
-    swap = function() {
-      var s;
-      s = from;
-      from = to;
-      return to = s;
-    };
-    if (from >= 0 && to >= 0) {
-      if (from > to) {
-        swap();
-      }
-      newArr = this.filter(function(el, i) {
-        return (from <= i && i <= to);
-      });
-    } else if (from >= 0 && to < 0) {
-      to = Math.abs(to);
-      newArr = this.filter(function(el, i, arr) {
-        return i <= from || i >= (arr.length - to);
-      });
-    } else if (from < 0 && to < 0) {
-      from = Math.abs(from);
-      to = Math.abs(to);
-      if (to > from) {
-        swap();
-      }
-      newArr = this.filter(function(el, i, arr) {
-        return ((arr.length - from) <= i && i <= (arr.length - to));
-      });
-    } else {
-      from = Math.abs(from);
-      newArr = this.filter(function(el, i, arr) {
-        return i <= to || i >= (arr.length - from);
-      });
+    if (from < 0) {
+      from = this.length - Math.abs(from);
     }
-    return newArr;
+    if (to < 0) {
+      to = this.length - Math.abs(to);
+    }
+    if (from > to) {
+      return [];
+    }
+    return this.filter(function(val, i) {
+      return (from <= i && i <= to);
+    });
   };
 
   _Array.to = function(to) {
