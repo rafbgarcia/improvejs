@@ -31,15 +31,15 @@ describe 'Number', ->
     # it takes to get the dates
     describe '#ago', ->
         it 'should return the time ago in seconds', ->
-            expect(30.days().ago()).toEqual     Date.now().toSeconds() - 30.days()
-            expect(1.hour().ago()).toEqual      Date.now().toSeconds() - 1.hour()
-            expect(32.minutes().ago()).toEqual  Date.now().toSeconds() - 32.minutes()
+            expect(30.days().ago()).toEqual     Date.now().milli_to_sec() - 30.days()
+            expect(1.hour().ago()).toEqual      Date.now().milli_to_sec() - 1.hour()
+            expect(32.minutes().ago()).toEqual  Date.now().milli_to_sec() - 32.minutes()
 
     describe '#fromNow', ->
         it 'should return the time from now in seconds', ->
-            expect(30.days().fromNow()).toEqual    Date.now().toSeconds() + 30.days()
-            expect(1.day().from_now()).toEqual     Date.now().toSeconds() + 1.day()
-            expect(3.minutes().from_now()).toEqual Date.now().toSeconds() + 3.minutes()
+            expect(30.days().fromNow()).toEqual    Date.now().milli_to_sec() + 30.days()
+            expect(1.day().from_now()).toEqual     Date.now().milli_to_sec() + 1.day()
+            expect(3.minutes().from_now()).toEqual Date.now().milli_to_sec() + 3.minutes()
 
     describe '#toDate', ->
         it 'should return a new Date object', ->
@@ -83,8 +83,8 @@ describe 'Number', ->
 
     describe '#multiple', ->
         it 'returns true if number is multiple of n', ->
-            expect(3.isMultipleOf(9)).toEqual true
-            expect(2.isMultipleOf(12)).toEqual true
-            expect(2.isMultipleOf(5)).toEqual false
-            expect(40.isMultipleOf(50)).toEqual false
+            expect(3.multipleOf(9)).toEqual true
+            expect(2.multipleOf(12)).toEqual true
+            expect(2.multipleOf(5)).toEqual false
+            expect(40.multipleOf(50)).toEqual false
 
