@@ -2,25 +2,12 @@ Improvejs is a coffeeScript made, ruby inspired functions for javascript
 
 All tested with Jasmine
 
-## Developing
-
-#### on terminal
-
-**_tab 1_**
-
-	$ cd path/to/improvejs
-	$ coffee -j improve.js -w -c src/*.coffee
-
-**_tab 2_**
-
-	$ coffee -w -c src/*.coffee spec/*.coffee
-
 
 ## What we got until now
 
 * [Number](https://github.com/rafbgarcia/improvejs/#number)
 * [Array](https://github.com/rafbgarcia/improvejs/#array)
-* [Date](https://github.com/rafbgarcia/improvejs/#array)
+* [Date](https://github.com/rafbgarcia/improvejs/#date)
 
 
 # Number
@@ -215,7 +202,21 @@ Returns an array without the specified indexes
 	arr.delete_at(-2, -1); // [ "Foo", "Bar"]
 
 
-
 # Date
 
 documenting...
+
+
+
+## Easy developing
+
+#### on terminal
+
+**_tab 1_**
+
+	$ cd path/to/improvejs
+	$ coffee -j improve.js -w -c src/*.coffee
+
+**_tab 2_**
+
+	$ coffee -w -c src/*.coffee spec/*.coffee
