@@ -35,23 +35,17 @@
         return this[this.length - abs(from)];
       }
     }
-    if (from >= 0) {
-      if (from < 0) {
-        from = this.length - abs(from);
-      }
-      if (to < 0) {
-        to = this.length - abs(to);
-      }
+    if (from < 0) {
+      from = this.length - abs(from);
+    }
+    if (to < 0) {
+      to = this.length - abs(to);
+    }
+    if (from <= to) {
       return this.filter(function(val, i) {
         return (from <= i && i <= to);
       });
     } else {
-      if (from < 0) {
-        from = this.length - abs(from);
-      }
-      if (to < 0) {
-        to = this.length - abs(to);
-      }
       return this.filter(function(val, i) {
         return i >= from || i <= to;
       });
@@ -59,14 +53,36 @@
   };
 
   _Array.to = function(to) {
+    if (to < 0) {
+      to = this.length - Math.abs(to);
+    }
+    if (to < 0) {
+      return [];
+    }
     return this.at(0, to);
   };
 
   _Array.from = function(from) {
-    if (from < 0) {
-      from = this.length - Math.abs(from);
+    if (from > this.length) {
+      return [];
     }
     return this.at(from, this.length);
+  };
+
+  _Array.first = function(n) {
+    if (!(n != null) || n === 1) {
+      return this.at(0);
+    } else {
+      return this.at(0, n - 1);
+    }
+  };
+
+  _Array.last = function(n) {
+    if (!(n != null) || n === 1) {
+      return this.at(-1);
+    } else {
+      return this.at(-n, -1);
+    }
   };
 
   _Array.compact = function() {
@@ -131,6 +147,14 @@
         return previous;
       }
     });
+  };
+
+  _Array.average = function() {
+    var count;
+    count = this.count_if(function(val) {
+      return !isNaN(val);
+    });
+    return this.sum() / count;
   };
 
   _Array.sum_if = function(fn) {

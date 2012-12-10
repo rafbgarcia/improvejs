@@ -29,6 +29,9 @@ describe 'Array', ->
             expect(arr2.at(-1, 0)).toEqual ['Banana', 'Papaya']
             expect(arr2.at(-2, 1)).toEqual ['Banana', 'Apple', 'Pear', 'Papaya']
 
+            expect(arr2.at(-2, -1)).toEqual ['Pear', 'Papaya']
+            expect(arr2.at(-1, -3)).toEqual ['Banana', 'Apple', 'Orange', 'Papaya']
+
             expect(arr2.at(1, -1)).toEqual ['Apple', 'Orange', 'Pear', 'Papaya']
             expect(arr2.at(0, 1)).toEqual ['Banana', 'Apple']
             expect(arr2.at(0, -1)).toEqual ['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']
@@ -39,13 +42,28 @@ describe 'Array', ->
             expect(arr2.from(-2)).toEqual ['Pear', 'Papaya']
             expect(arr2.from(0)).toEqual ['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']
             expect(arr2.from(6)).toEqual []
+            expect(arr2.from(5)).toEqual []
             # value greater than array length
             expect(arr2.from(-6)).toEqual ['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']
+
 
     describe '#to', ->
         it 'returns elements from 0 till n', ->
             expect(arr2.to(2)).toEqual ['Banana', 'Apple', 'Orange']
             expect(arr2.to(-1)).toEqual ['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']
+            expect(arr2.to(-5)).toEqual ['Banana']
+            expect(arr2.to(-6)).toEqual []
+
+    describe '#first', ->
+        it 'returns first or first n elements', ->
+            expect(arr2.first()).toEqual 'Banana'
+            expect(arr2.first(2)).toEqual ['Banana', 'Apple']
+
+    describe '#last', ->
+        it 'returns last or last n elements', ->
+            expect(arr2.last()).toEqual 'Papaya'
+            expect(arr2.last(2)).toEqual ['Pear', 'Papaya']
+
 
     describe '#compact', ->
         it 'removes empty elements', ->
@@ -77,6 +95,10 @@ describe 'Array', ->
             sum = numbers.sum_if (val, i) ->
                 return val < 100
             expect(sum).toEqual 55
+
+    describe '#average', ->
+        it 'returns the average of the elements', ->
+            expect(numbers.average()).toEqual 559
 
     describe '#multiply', ->
         it 'multiply all elements in array', ->

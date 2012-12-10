@@ -39,6 +39,8 @@
       return it('return elements at range', function() {
         expect(arr2.at(-1, 0)).toEqual(['Banana', 'Papaya']);
         expect(arr2.at(-2, 1)).toEqual(['Banana', 'Apple', 'Pear', 'Papaya']);
+        expect(arr2.at(-2, -1)).toEqual(['Pear', 'Papaya']);
+        expect(arr2.at(-1, -3)).toEqual(['Banana', 'Apple', 'Orange', 'Papaya']);
         expect(arr2.at(1, -1)).toEqual(['Apple', 'Orange', 'Pear', 'Papaya']);
         expect(arr2.at(0, 1)).toEqual(['Banana', 'Apple']);
         return expect(arr2.at(0, -1)).toEqual(['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']);
@@ -50,13 +52,28 @@
         expect(arr2.from(-2)).toEqual(['Pear', 'Papaya']);
         expect(arr2.from(0)).toEqual(['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']);
         expect(arr2.from(6)).toEqual([]);
+        expect(arr2.from(5)).toEqual([]);
         return expect(arr2.from(-6)).toEqual(['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']);
       });
     });
     describe('#to', function() {
       return it('returns elements from 0 till n', function() {
         expect(arr2.to(2)).toEqual(['Banana', 'Apple', 'Orange']);
-        return expect(arr2.to(-1)).toEqual(['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']);
+        expect(arr2.to(-1)).toEqual(['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']);
+        expect(arr2.to(-5)).toEqual(['Banana']);
+        return expect(arr2.to(-6)).toEqual([]);
+      });
+    });
+    describe('#first', function() {
+      return it('returns first or first n elements', function() {
+        expect(arr2.first()).toEqual('Banana');
+        return expect(arr2.first(2)).toEqual(['Banana', 'Apple']);
+      });
+    });
+    describe('#last', function() {
+      return it('returns last or last n elements', function() {
+        expect(arr2.last()).toEqual('Papaya');
+        return expect(arr2.last(2)).toEqual(['Pear', 'Papaya']);
       });
     });
     describe('#compact', function() {
@@ -99,6 +116,11 @@
           return val < 100;
         });
         return expect(sum).toEqual(55);
+      });
+    });
+    describe('#average', function() {
+      return it('returns the average of the elements', function() {
+        return expect(numbers.average()).toEqual(559);
       });
     });
     describe('#multiply', function() {

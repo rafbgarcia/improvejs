@@ -18,30 +18,46 @@ _Array.at = (from, to) ->
         else
             @[@length - abs(from)]
 
+    from = @length - abs(from) if from < 0
+    to   = @length - abs(to)   if to   < 0
 
-    if from >= 0
-        from = @length - abs(from) if from < 0
-        to   = @length - abs(to)   if to   < 0
+    if from <= to
         @filter (val, i) ->
             return from <= i <= to
     else
-        from = @length - abs(from) if from < 0
-        to   = @length - abs(to)   if to   < 0
         @filter (val, i) ->
             i >= from or i <= to
 
 
 _Array.to = (to) ->
+    to = @length - Math.abs(to) if to < 0
+    return [] if to < 0
     @at 0, to
 
 _Array.from = (from) ->
-    from = @length - Math.abs(from) if from < 0
+    return [] if from > @length
     @at from, @length
+
+
+_Array.first = (n) ->
+    if not n? or n == 1
+        @at(0)
+    else
+        @at(0, n - 1)
+
+
+_Array.last = (n) ->
+    if not n? or n == 1
+        @at(-1)
+    else
+        @at(-n, -1)
+
 
 _Array.compact = ->
     newArr = @filter (el) ->
         el? and el.trim()
     newArr
+
 
 _Array.count_if = (callback) ->
     newArr = @filter (el, i, arr) ->
@@ -83,6 +99,13 @@ _Array.sum = ->
             previous
 
 
+_Array.average = ->
+    count = @count_if (val) ->
+        not isNaN(val)
+
+    @sum() / count
+
+
 _Array.sum_if = (fn) ->
     newArr = @filter (val, i, arr) ->
         fn(val, i, arr)
@@ -110,12 +133,14 @@ _Array.diff   = (otherArray) ->
     @filter (val, i, arr) ->
         not otherArray.include(val)
 
+
 _Array.diff_all =
 _Array.diffAll  = (otherArray) ->
     newArr = @filter (val) ->
         not otherArray.include(val)
     newArr.concat otherArray.filter (val) =>
         not @include(val)
+
 
 _Array.delete_at =
 _Array.deleteAt  =
