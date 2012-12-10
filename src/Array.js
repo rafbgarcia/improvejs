@@ -15,38 +15,47 @@
   };
 
   _Array.include = function(val) {
-    if (this.indexOf(val) !== -1) {
-      return true;
-    } else {
+    if (this.indexOf(val) === -1) {
       return false;
+    } else {
+      return true;
     }
   };
 
   _Array.at = function(from, to) {
-    var newArr;
+    var abs;
     if (from == null) {
       throw new TypeError('argument "from" must be specified');
     }
+    abs = Math.abs;
     if (to == null) {
       if (from >= 0) {
         return this[from];
       } else {
-        return this[this.length - Math.abs(from)];
+        return this[this.length - abs(from)];
       }
     }
-    newArr = [];
-    if (from < 0) {
-      from = this.length - Math.abs(from);
+    if (from >= 0) {
+      if (from < 0) {
+        from = this.length - abs(from);
+      }
+      if (to < 0) {
+        to = this.length - abs(to);
+      }
+      return this.filter(function(val, i) {
+        return (from <= i && i <= to);
+      });
+    } else {
+      if (from < 0) {
+        from = this.length - abs(from);
+      }
+      if (to < 0) {
+        to = this.length - abs(to);
+      }
+      return this.filter(function(val, i) {
+        return i >= from || i <= to;
+      });
     }
-    if (to < 0) {
-      to = this.length - Math.abs(to);
-    }
-    if (from > to) {
-      return [];
-    }
-    return this.filter(function(val, i) {
-      return (from <= i && i <= to);
-    });
   };
 
   _Array.to = function(to) {
@@ -54,6 +63,9 @@
   };
 
   _Array.from = function(from) {
+    if (from < 0) {
+      from = this.length - Math.abs(from);
+    }
     return this.at(from, this.length);
   };
 

@@ -37,8 +37,8 @@
         return expect(arr.at(-1)).toEqual('Orange');
       });
       return it('return elements at range', function() {
-        expect(arr2.at(1, 0)).toEqual([]);
-        expect(arr2.at(-2, 1)).toEqual([]);
+        expect(arr2.at(-1, 0)).toEqual(['Banana', 'Papaya']);
+        expect(arr2.at(-2, 1)).toEqual(['Banana', 'Apple', 'Pear', 'Papaya']);
         expect(arr2.at(1, -1)).toEqual(['Apple', 'Orange', 'Pear', 'Papaya']);
         expect(arr2.at(0, 1)).toEqual(['Banana', 'Apple']);
         return expect(arr2.at(0, -1)).toEqual(['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']);
@@ -48,13 +48,15 @@
       return it('returns elements from n till last', function() {
         expect(arr2.from(2)).toEqual(['Orange', 'Pear', 'Papaya']);
         expect(arr2.from(-2)).toEqual(['Pear', 'Papaya']);
-        return expect(arr2.from(6)).toEqual([]);
+        expect(arr2.from(0)).toEqual(['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']);
+        expect(arr2.from(6)).toEqual([]);
+        return expect(arr2.from(-6)).toEqual(['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']);
       });
     });
     describe('#to', function() {
       return it('returns elements from 0 till n', function() {
-        expect(arr2.to(2)).toEqual(arr2.at(0, 2));
-        return expect(arr2.to(-1)).toEqual(arr2.at(0, -1));
+        expect(arr2.to(2)).toEqual(['Banana', 'Apple', 'Orange']);
+        return expect(arr2.to(-1)).toEqual(['Banana', 'Apple', 'Orange', 'Pear', 'Papaya']);
       });
     });
     describe('#compact', function() {

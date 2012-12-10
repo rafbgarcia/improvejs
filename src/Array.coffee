@@ -5,33 +5,37 @@ _Array.each = (fn) ->
 
 
 _Array.include = (val) ->
-    if @indexOf(val) != -1 then true else false
+    if @indexOf(val) == -1 then false else true
 
 
 _Array.at = (from, to) ->
     throw new TypeError('argument "from" must be specified') unless from?
 
+    abs = Math.abs
     unless to?
         return if from >= 0
             @[from]
         else
-            @[@length - Math.abs(from)]
+            @[@length - abs(from)]
 
-    newArr = []
 
-    from = @length - Math.abs(from) if from < 0
-    to   = @length - Math.abs(to)   if to < 0
-
-    return [] if from > to
-
-    @filter (val, i) ->
-        return from <= i <= to
+    if from >= 0
+        from = @length - abs(from) if from < 0
+        to   = @length - abs(to)   if to   < 0
+        @filter (val, i) ->
+            return from <= i <= to
+    else
+        from = @length - abs(from) if from < 0
+        to   = @length - abs(to)   if to   < 0
+        @filter (val, i) ->
+            i >= from or i <= to
 
 
 _Array.to = (to) ->
     @at 0, to
 
 _Array.from = (from) ->
+    from = @length - Math.abs(from) if from < 0
     @at from, @length
 
 _Array.compact = ->
