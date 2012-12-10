@@ -90,4 +90,12 @@ describe 'Date', ->
             expect(_date.daysInYear()).toEqual 365
 
 
+    describe '#weekday', ->
+        it 'returns day of week', ->
+            date = new Date(2012, 11, 8)
+            _date = new Date(2012, 11, 9)
+            expect(date.weekday()).toEqual 6
+            expect(_date.weekday()).toEqual 0
+
+
 

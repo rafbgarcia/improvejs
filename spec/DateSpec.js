@@ -102,13 +102,22 @@
         return expect(date.daysInMonth()).toEqual(29);
       });
     });
-    return describe('#daysInYear', function() {
+    describe('#daysInYear', function() {
       return it('returns the number of days in current year', function() {
         var date, _date;
         date = new Date(2012, 3, 8);
         _date = new Date(2010, 3, 8);
         expect(date.daysInYear()).toEqual(366);
         return expect(_date.daysInYear()).toEqual(365);
+      });
+    });
+    return describe('#weekday', function() {
+      return it('returns day of week', function() {
+        var date, _date;
+        date = new Date(2012, 11, 8);
+        _date = new Date(2012, 11, 9);
+        expect(date.weekday()).toEqual(6);
+        return expect(_date.weekday()).toEqual(0);
       });
     });
   });
