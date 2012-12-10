@@ -1,4 +1,4 @@
-Improvejs is a coffeeScript made, ruby inspired functions for javascript
+Improvejs is a coffeeScript made, ruby inspired functions for javascript, focused on code readability
 
 All tested with Jasmine
 
