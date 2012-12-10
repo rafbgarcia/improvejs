@@ -159,17 +159,23 @@ Count elements filtered by a condition
 	console.log(count); // 3
 
 
-### min, max, sum, sum_if, multiply, average
+### min, max
 
 `array = [100, 20, 'a word', 80, 30, 40, 'another word', 50]`
 
 	array.min();      // 20
 	array.max();      // 100
+
+
+# sum, sum_if, multiply, average
+
+`array = [100, 20, 'a word', 80, 30, 40, 'another word', 50]`
+
 	array.sum();      // 320
 	array.average();  // 53.333333333333336
 	array.multiply(); // 9600000000
 
-	array.sum_if(function(value, index, array) {
+	array.sum_if(function(value, index, arr) {
 		return value <= 50;
 	});
 	// 140
