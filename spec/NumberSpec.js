@@ -102,12 +102,40 @@
         return expect(3..multipleOf(9)).toEqual(false);
       });
     });
-    return describe('#dividerOf', function() {
+    describe('#dividerOf', function() {
       return it('returns true if number is divider of n', function() {
         expect(3..dividerOf(9)).toEqual(true);
         expect(2..dividerOf(8)).toEqual(true);
         expect(10..dividerOf(5)).toEqual(false);
         return expect(9..dividerOf(3)).toEqual(false);
+      });
+    });
+    describe('#monthName', function() {
+      return it('returns the month name', function() {
+        expect(0..monthName()).toEqual('January');
+        expect(11..monthName()).toEqual('December');
+        expect(0..monthName('pt_br')).toEqual('Janeiro');
+        return expect(11..monthName('pt_br')).toEqual('Dezembro');
+      });
+    });
+    describe('#shortMonthName', function() {
+      return it('returns the short month name', function() {
+        expect(0..shortMonthName()).toEqual('Jan');
+        expect(11..shortMonthName()).toEqual('Dec');
+        expect(0..shortMonthName('pt_br')).toEqual('Jan');
+        return expect(11..shortMonthName('pt_br')).toEqual('Dez');
+      });
+    });
+    describe('#dayName', function() {
+      return it('returns the day name', function() {
+        expect(0..dayName()).toEqual('Sunday');
+        return expect(6..dayName()).toEqual('Saturday');
+      });
+    });
+    return describe('#shortDayName', function() {
+      return it('returns the short Day name', function() {
+        expect(0..shortDayName()).toEqual('Sun');
+        return expect(6..shortDayName()).toEqual('Sat');
       });
     });
   });

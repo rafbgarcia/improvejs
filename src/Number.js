@@ -45,14 +45,6 @@
     return Date.now().milli_to_sec() - this.valueOf();
   };
 
-  _Number.milli_to_sec = _Number.milliToSeconds = function() {
-    return parseInt(this.valueOf() / 1000);
-  };
-
-  _Number.sec_to_milli = _Number.secToMilli = function() {
-    return this.valueOf() * 1000;
-  };
-
   _Number.from_now = _Number.fromNow = function() {
     return Date.now().milli_to_sec() + this.valueOf();
   };
@@ -69,6 +61,34 @@
 
   _Number.days_in_month_of = _Number.daysInMonthOf = function(year) {
     return new Date(year, this.valueOf() + 1, 0).getDate();
+  };
+
+  _Number.month_name = _Number.monthName = function(lang) {
+    lang = lang || 'en';
+    return Date.locale[lang] && Date.locale[lang].month_names[this.valueOf()];
+  };
+
+  _Number.short_month_name = _Number.shortMonthName = function(lang) {
+    lang = lang || 'en';
+    return Date.locale[lang] && Date.locale[lang].month_names_short[this.valueOf()];
+  };
+
+  _Number.day_name = _Number.dayName = function(lang) {
+    lang = lang || 'en';
+    return Date.locale[lang] && Date.locale[lang].day_names[this.valueOf()];
+  };
+
+  _Number.short_day_name = _Number.shortDayName = function(lang) {
+    lang = lang || 'en';
+    return Date.locale[lang] && Date.locale[lang].day_names_short[this.valueOf()];
+  };
+
+  _Number.milli_to_sec = _Number.milliToSeconds = function() {
+    return parseInt(this.valueOf() / 1000);
+  };
+
+  _Number.sec_to_milli = _Number.secToMilli = function() {
+    return this.valueOf() * 1000;
   };
 
 }).call(this);

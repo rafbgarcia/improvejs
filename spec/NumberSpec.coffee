@@ -92,3 +92,26 @@ describe 'Number', ->
             expect(10.dividerOf(5)).toEqual false
             expect(9.dividerOf(3)).toEqual false
 
+    describe '#monthName', ->
+        it 'returns the month name', ->
+            expect(0.monthName()).toEqual 'January'
+            expect(11.monthName()).toEqual 'December'
+            expect(0.monthName('pt_br')).toEqual 'Janeiro'
+            expect(11.monthName('pt_br')).toEqual 'Dezembro'
+
+    describe '#shortMonthName', ->
+        it 'returns the short month name', ->
+            expect(0.shortMonthName()).toEqual 'Jan'
+            expect(11.shortMonthName()).toEqual 'Dec'
+            expect(0.shortMonthName('pt_br')).toEqual 'Jan'
+            expect(11.shortMonthName('pt_br')).toEqual 'Dez'
+
+    describe '#dayName', ->
+        it 'returns the day name', ->
+            expect(0.dayName()).toEqual 'Sunday'
+            expect(6.dayName()).toEqual 'Saturday'
+
+    describe '#shortDayName', ->
+        it 'returns the short Day name', ->
+            expect(0.shortDayName()).toEqual 'Sun'
+            expect(6.shortDayName()).toEqual 'Sat'

@@ -46,18 +46,6 @@ _Number.ago = ->
     Date.now().milli_to_sec() - @valueOf()
 
 
-# TODO rename function to milli_to_sec
-_Number.milli_to_sec =
-_Number.milliToSeconds  = ->
-	parseInt @valueOf() / 1000
-
-
-# TODO rename function to secs_to_milli
-_Number.sec_to_milli =
-_Number.secToMilli  = ->
-	@valueOf() * 1000
-
-
 _Number.from_now =
 _Number.fromNow  = ->
     Date.now().milli_to_sec() + @valueOf()
@@ -78,3 +66,35 @@ _Number.daysInMonth   = ->
 _Number.days_in_month_of =
 _Number.daysInMonthOf    = (year) ->
     new Date(year, @valueOf() + 1, 0).getDate()
+
+
+_Number.month_name =
+_Number.monthName  = (lang) ->
+    lang = lang or 'en'
+    Date.locale[lang] && Date.locale[lang].month_names[@valueOf()]
+
+_Number.short_month_name =
+_Number.shortMonthName   = (lang) ->
+    lang = lang or 'en'
+    Date.locale[lang] && Date.locale[lang].month_names_short[@valueOf()]
+
+
+_Number.day_name =
+_Number.dayName  = (lang) ->
+    lang = lang or 'en'
+    Date.locale[lang] && Date.locale[lang].day_names[@valueOf()]
+
+_Number.short_day_name =
+_Number.shortDayName  = (lang) ->
+    lang = lang or 'en'
+    Date.locale[lang] && Date.locale[lang].day_names_short[@valueOf()]
+
+
+_Number.milli_to_sec =
+_Number.milliToSeconds  = ->
+    parseInt @valueOf() / 1000
+
+
+_Number.sec_to_milli =
+_Number.secToMilli  = ->
+    @valueOf() * 1000
