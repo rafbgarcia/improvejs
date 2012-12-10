@@ -69,17 +69,14 @@ Returns the number of days for the given 0-based month
 	1..daysInMonth() // 29 (of current year -> 2012)
 	1..daysInMonthOf(2011) // 28
 
-### Playing around
 
-	// calendar
-    12..times(function(month) {
-        console.log('Month: ' + (month+1));
-        console.log('================================');
-        month.daysInMonth().times(function(day) {
-            console.log(day+1);
-        });
-        console.log('================================');
-    });
+### (short)monthName, (short)dayName
+
+	0..monthName();       // "January"
+	11..shortMonthName(); // "Dec"
+
+	0..dayName();       // "Sunday"
+	6..shortDayName();  // "Sat"
 
 
 # Array
