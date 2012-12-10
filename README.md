@@ -113,16 +113,32 @@ Checks if array include value
 	arr.at(2);     // "John"
 	arr.at(-1);    // "Doe"
 	arr.at(2, -1); // ["John", "Doe"]
-	arr.at(-1, 1); // []
+	arr.at(-1, 0); // ["Foo", "Doe"]
+	arr.at(-1, -3); // ["Foo", "Bar", "Doe"]
 
  	// Returns indexes from n till last
 	arr.from(-2); // ['John', 'Doe']
+	arr.from(-4); // ['Foo', 'Bar', 'John', 'Doe']
 	arr.from(3);  // ['Doe']
+	arr.from(4);  // []
 
 	// Returns indexes from 0 till n
 	arr.to(1);  // ['Foo', 'Bar']
 	arr.to(-4); // ['Foo']
 	arr.to(-5); // []
+
+
+### first, last
+
+`arr = ['Foo', 'Bar', 'John', 'Doe']`
+
+	// Returns the first or first n elements
+	arr.first();  // 'Foo'
+	arr.first(2); // ["Foo", "Bar"]
+
+	// Returns the last or last n elements
+	arr.last();  // 'Doe'
+	arr.last(3); // ["Bar", "John", "Doe"]
 
 
 ### compact
@@ -146,13 +162,14 @@ Count elements filtered by a condition
 	console.log(count); // 3
 
 
-### min, max, sum, sum_if, multiply
+### min, max, sum, sum_if, multiply, average
 
 `array = [100, 20, 'a word', 80, 30, 40, 'another word', 50]`
 
 	array.min();      // 20
 	array.max();      // 100
 	array.sum();      // 320
+	array.average();  // 53.333333333333336
 	array.multiply(); // 9600000000
 
 	array.sum_if(function(value, index, array) {
