@@ -167,7 +167,7 @@ Count elements filtered by a condition
 	array.max();      // 100
 
 
-# sum, sum_if, multiply, average
+### sum, sum_if, multiply, average
 
 `array = [100, 20, 'a word', 80, 30, 40, 'another word', 50]`
 
