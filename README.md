@@ -233,7 +233,7 @@ Returns an array without the specified indexes
 
 # Date
 
-documenting...
+documentation in progress...
 
 
 
