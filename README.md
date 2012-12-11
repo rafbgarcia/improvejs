@@ -41,6 +41,18 @@ Checks if number is odd
 	7..odd(); // true
 	6..odd(); // false
 
+### upto, downto
+
+Returns an array from integer to n
+
+	2..upto(8); // [2, 3, 4, 5, 6, 7, 8]
+	18..downto(9); // [18, 17, 16, 15, 14, 13, 12, 11, 10, 9]
+
+	// show all month names
+	0..upto(11).each(function(i) {
+		console.log(i.monthName());
+	});
+
 ### minutes, hours, days, weeks
 
 Returns time in seconds for the expression
