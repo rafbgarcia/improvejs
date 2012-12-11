@@ -115,3 +115,33 @@ describe 'Number', ->
         it 'returns the short Day name', ->
             expect(0.shortDayName()).toEqual 'Sun'
             expect(6.shortDayName()).toEqual 'Sat'
+
+    describe '#upto', ->
+        it 'returns [] if integer > n', ->
+            expect(6.upto 5).toEqual []
+
+        it 'returns [INTEGER] if integer == n', ->
+            expect(6.upto 6).toEqual [6]
+
+        it 'return array from integer till n if no callback is specified', ->
+            expect(4.upto(8)).toEqual [4, 5, 6, 7, 8]
+
+        it 'loops from integer till n if callback is specified', ->
+            c = 1
+            1.upto 10, (i) ->
+                expect(c++).toEqual i
+
+    describe '#downto', ->
+        it 'returns [] if integer < n', ->
+            expect(5.downto 6).toEqual []
+
+        it 'returns [INTEGER] if integer == n', ->
+            expect(3.downto 3).toEqual [3]
+
+        it 'return array from n till integer if no callback is specified', ->
+            expect(6.downto(3)).toEqual [6, 5, 4, 3]
+
+        it 'loops from n till integer if callback is specified', ->
+            c = 10
+            10.downto 5, (i) ->
+                expect(c--).toEqual i

@@ -18,6 +18,34 @@ _Number.dividerOf  = (n) ->
     n % @valueOf() == 0
 
 
+_Number.upto = (n, fn) ->
+    val    = @valueOf()
+    newArr = [val..n]
+
+    if typeof fn != 'function'
+        if val < n
+            return newArr
+        else if val == n
+            return [val]
+        else
+            return []
+
+    fn(i, newArr) for i in newArr
+
+_Number.downto = (n, fn) ->
+    val    = @valueOf()
+    newArr = [val..n]
+
+    if typeof fn != 'function'
+        if val > n
+            return newArr
+        else if val == n
+            return [val]
+        else
+            return []
+
+    fn(i, newArr) for i in newArr
+
 # Date functions
 
 _Number.min     =

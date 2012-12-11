@@ -132,10 +132,46 @@
         return expect(6..dayName()).toEqual('Saturday');
       });
     });
-    return describe('#shortDayName', function() {
+    describe('#shortDayName', function() {
       return it('returns the short Day name', function() {
         expect(0..shortDayName()).toEqual('Sun');
         return expect(6..shortDayName()).toEqual('Sat');
+      });
+    });
+    describe('#upto', function() {
+      it('returns [] if integer > n', function() {
+        return expect(6..upto(5)).toEqual([]);
+      });
+      it('returns [INTEGER] if integer == n', function() {
+        return expect(6..upto(6)).toEqual([6]);
+      });
+      it('return array from integer till n if no callback is specified', function() {
+        return expect(4..upto(8)).toEqual([4, 5, 6, 7, 8]);
+      });
+      return it('loops from integer till n if callback is specified', function() {
+        var c;
+        c = 1;
+        return 1..upto(10, function(i) {
+          return expect(c++).toEqual(i);
+        });
+      });
+    });
+    return describe('#downto', function() {
+      it('returns [] if integer < n', function() {
+        return expect(5..downto(6)).toEqual([]);
+      });
+      it('returns [INTEGER] if integer == n', function() {
+        return expect(3..downto(3)).toEqual([3]);
+      });
+      it('return array from n till integer if no callback is specified', function() {
+        return expect(6..downto(3)).toEqual([6, 5, 4, 3]);
+      });
+      return it('loops from n till integer if callback is specified', function() {
+        var c;
+        c = 10;
+        return 10..downto(5, function(i) {
+          return expect(c--).toEqual(i);
+        });
       });
     });
   });

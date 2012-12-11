@@ -25,6 +25,56 @@
     return n % this.valueOf() === 0;
   };
 
+  _Number.upto = function(n, fn) {
+    var i, newArr, val, _i, _j, _len, _results, _results1;
+    val = this.valueOf();
+    newArr = (function() {
+      _results = [];
+      for (var _i = val; val <= n ? _i <= n : _i >= n; val <= n ? _i++ : _i--){ _results.push(_i); }
+      return _results;
+    }).apply(this);
+    if (typeof fn !== 'function') {
+      if (val < n) {
+        return newArr;
+      } else if (val === n) {
+        return [val];
+      } else {
+        return [];
+      }
+    }
+    _results1 = [];
+    for (_j = 0, _len = newArr.length; _j < _len; _j++) {
+      i = newArr[_j];
+      _results1.push(fn(i, newArr));
+    }
+    return _results1;
+  };
+
+  _Number.downto = function(n, fn) {
+    var i, newArr, val, _i, _j, _len, _results, _results1;
+    val = this.valueOf();
+    newArr = (function() {
+      _results = [];
+      for (var _i = val; val <= n ? _i <= n : _i >= n; val <= n ? _i++ : _i--){ _results.push(_i); }
+      return _results;
+    }).apply(this);
+    if (typeof fn !== 'function') {
+      if (val > n) {
+        return newArr;
+      } else if (val === n) {
+        return [val];
+      } else {
+        return [];
+      }
+    }
+    _results1 = [];
+    for (_j = 0, _len = newArr.length; _j < _len; _j++) {
+      i = newArr[_j];
+      _results1.push(fn(i, newArr));
+    }
+    return _results1;
+  };
+
   _Number.min = _Number.mins = _Number.minute = _Number.minutes = function() {
     return this.valueOf() * 60;
   };
