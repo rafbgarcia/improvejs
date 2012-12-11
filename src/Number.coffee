@@ -22,29 +22,24 @@ _Number.upto = (n, fn) ->
     val    = @valueOf()
     newArr = [val..n]
 
-    if typeof fn != 'function'
-        if val < n
-            return newArr
-        else if val == n
-            return [val]
-        else
-            return []
+    if val < n
+        return newArr
+    else if val == n
+        return [val]
+    else
+        return []
 
-    fn(i, newArr) for i in newArr
 
-_Number.downto = (n, fn) ->
+_Number.downto = (n) ->
     val    = @valueOf()
     newArr = [val..n]
 
-    if typeof fn != 'function'
-        if val > n
-            return newArr
-        else if val == n
-            return [val]
-        else
-            return []
-
-    fn(i, newArr) for i in newArr
+    if val > n
+        return newArr
+    else if val == n
+        return [val]
+    else
+        return []
 
 # Date functions
 
