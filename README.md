@@ -245,8 +245,60 @@ Returns an array without the specified indexes
 
 # Date
 
-documentation in progress...
+### weekend
 
+Returns true if Date is weekend
+
+    date = new Date(2012, 11 , 8)
+    date.weekend(); // true
+
+### weekday
+
+Returns the day of the week (from 0 to 6)
+
+    date = new Date(2012, 11 , 8)
+    date.weekday(); // 6
+    date.weekday().dayName(); // "Saturday"
+
+### advance, reduce
+
+`advance` n seconds from date
+
+    date = new Date(2012, 11, 10);
+    date.advance(1..day()); // Tue Dec 11 2012 00:00:00 GMT-0300 (BRT)
+    date.advance(11..daysInMonth().days()); // Thu Jan 10 2013 00:00:00 GMT-0300 (BRT)
+
+`reduce` n seconds from a date
+
+    date.reduce(1..week()); // Mon Dec 03 2012 00:00:00 GMT-0300 (BRT)
+
+### tomorrow, yesterday
+
+    date = new Date(2012, 11, 10);
+
+    date.tomorrow(); // Tue Dec 11 2012 00:00:00 GMT-0300 (BRT)
+    date.yesterday(); // Sun Dec 09 2012 00:00:00 GMT-0300 (BRT)
+
+### isLeapYear
+
+Returns true if year is a leap year
+
+    date = new Date(2012, 11, 10);
+    date.isLeapYear(); // true
+
+### daysInMonth, daysInYear
+
+    date = new Date(2012, 11, 10);
+
+    date.daysInMonth(); // 31
+    date.daysInYear(); // 366
+
+### nextMonth, lastMonth, nextYear, lastYear
+
+    date = new Date(2012, 11, 10);
+
+    date.nextMonth(); // Thu Jan 10 2013 00:00:00 GMT-0300 (BRT)
+    date.lastMonth(); // Sat Nov 10 2012 00:00:00 GMT-0300 (BRT)
 
 
 ## Easy developing
