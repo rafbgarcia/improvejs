@@ -2,6 +2,8 @@ Improvejs is a coffeeScript made, ruby inspired functions for javascript, focuse
 
 All tested with Jasmine
 
+**Before use it, you should read this: http://perfectionkills.com/extending-built-in-native-objects-evil-or-not/**
+
 
 ## What we got until now
 
