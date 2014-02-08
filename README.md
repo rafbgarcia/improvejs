@@ -1,11 +1,4 @@
-Improvejs is a coffeeScript made, ruby inspired functions for javascript, focused on code readability
-
-All tested with Jasmine
-
-**Before use it, you should read this: http://perfectionkills.com/extending-built-in-native-objects-evil-or-not/**
-
-
-## What we got until now
+Functions for javascript focused on code readability
 
 * [Number](https://github.com/rafbgarcia/improvejs/#number)
 * [Array](https://github.com/rafbgarcia/improvejs/#array)
