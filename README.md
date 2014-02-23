@@ -1,8 +1,4 @@
-Functions for javascript focused on code readability
-
-* [Number](https://github.com/rafbgarcia/improvejs/#number)
-* [Array](https://github.com/rafbgarcia/improvejs/#array)
-* [Date](https://github.com/rafbgarcia/improvejs/#date)
+Imagine JS readable like rails.
 
 
 # Number
@@ -294,23 +290,3 @@ Returns true if year is a leap year
 
     date.nextMonth(); // Thu Jan 10 2013 00:00:00 GMT-0300 (BRT)
     date.lastMonth(); // Sat Nov 10 2012 00:00:00 GMT-0300 (BRT)
-
-
-## Easy developing
-
-open terminal and
-
-`$ cd path/to/improvejs`
-
-**_tab 1_**
-
-join all ./src/*.coffee files into ./improve.js
-
-	$ coffee -j improve.js -w -c src/*.coffee
-
-**_tab 2_**
-
-watch and compile all files changes in ./src/*.coffee and ./spec/*.coffee
-
-	$ coffee -w -c src/*.coffee spec/*.coffee
-
